@@ -5,7 +5,7 @@ cd spark
 wget https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz
 tar xzfv openjdk-11.0.2_linux-x64_bin.tar.gz
 
-echo"Exporting Java Path..."
+echo "Exporting Java Path..."
 echo '' >> ~/.bashrc
 echo 'export JAVA_HOME="${HOME}/spark/jdk-11.0.2"' >> ~/.bashrc
 echo 'export PATH="${JAVA_HOME}/bin:${PATH}"' >> ~/.bashrc
@@ -26,8 +26,8 @@ rm spark-3.0.3-bin-hadoop3.2.tgz
 
 echo "Exporting Spark Home..."
 echo '' >> ~/.bashrc
-export 'SPARK_HOME="${HOME}/spark/spark-3.0.3-bin-hadoop3.2"' >> ~/.bashrc
-export 'PATH="${SPARK_HOME}/bin:${PATH}"' >> ~/.bashrc
+echo 'export SPARK_HOME="${HOME}/spark/spark-3.0.3-bin-hadoop3.2"' >> ~/.bashrc
+echo 'export PATH="${SPARK_HOME}/bin:${PATH}"' >> ~/.bashrc
 eval "$(cat ~/.bashrc | tail -n +10)" # A hack because source .bashrc doesn't work inside the script
 
 
@@ -37,5 +37,5 @@ py4j="$(basename ${SPARK_HOME}/python/lib/py4j*)"
 echo "py4j versions is $py4j"
 
 echo '' >> ~/.bashrc
-export 'PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"' >> ~/.bashrc
-export 'PYTHONPATH="${SPARK_HOME}/python/lib/${py4j}:$PYTHONPATH"' >> ~/.bashrc
+echo 'export PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"' >> ~/.bashrc
+echo 'export PYTHONPATH="${SPARK_HOME}/python/lib/${!py4j}:$PYTHONPATH"' >> ~/.bashrc
