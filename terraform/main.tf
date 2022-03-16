@@ -22,6 +22,26 @@ provider "google" {
 resource "google_compute_instance" "vm_instance" {
   name                      = "streamify-kafka-instance"
   machine_type              = "n1-standard-2"
+  tags                      = ["web", "dev", "kafka"]
+  allow_stopping_for_update = true
+
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-os-cloud/ubuntu-2004-lts"
+      size  = 30
+    }
+  }
+
+  network_interface {
+    network = "default"
+    access_config {
+    }
+  }
+}
+
+resource "google_compute_instance" "spark_vm_instance" {
+  name                      = "streamify-spark-instance"
+  machine_type              = "n1-standard-2"
   tags                      = ["web", "dev"]
   allow_stopping_for_update = true
 
