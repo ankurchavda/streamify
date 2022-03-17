@@ -19,10 +19,10 @@ provider "google" {
 #   name = "streamify-network"
 # }
 
-resource "google_compute_instance" "vm_instance" {
+resource "google_compute_instance" "kafka_vm_instance" {
   name                      = "streamify-kafka-instance"
-  machine_type              = "n1-standard-2"
-  tags                      = ["web", "dev", "kafka"]
+  machine_type              = "e2-standard-4"
+  tags                      = ["kafka"]
   allow_stopping_for_update = true
 
   boot_disk {
