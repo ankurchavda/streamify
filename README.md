@@ -89,3 +89,4 @@ bash scripts/spark_setup.sh username
 
 1. Fix Spark Script with py4j eval
 2. Make setup easier with `Makefile`. Possibly a one-click setup.
+3. Setup the entire cluster with Terraform.
