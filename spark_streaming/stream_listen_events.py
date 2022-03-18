@@ -20,7 +20,7 @@ listen_events = (spark
               .format("kafka")
               .option("kafka.bootstrap.servers", f"{KAFKA_ADDRESS}:9092")
               .option("startingOffsets", "earliest")
-              .option("subscribe", "yellow_taxi_ride.json")
+              .option("subscribe", "listen_events")
               .load())
 
 listen_events = listen_events.selectExpr("CAST(value AS STRING)")
