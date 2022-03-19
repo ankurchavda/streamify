@@ -105,11 +105,13 @@ def create_file_write_stream(stream, storage_path, checkpoint_path, trigger="120
             append, complete, update
     """
 
-    (stream
-    .writeStream
-    .format(file_format)
-    .partitionBy("month", "day", "hour")
-    .option("path", storage_path)
-    .option("checkpointLocation", checkpoint_path)
-    .trigger(processingTime=trigger)
-    .outputMode(output_mode))
+    write_stream = (stream
+                    .writeStream
+                    .format(file_format)
+                    .partitionBy("month", "day", "hour")
+                    .option("path", storage_path)
+                    .option("checkpointLocation", checkpoint_path)
+                    .trigger(processingTime=trigger)
+                    .outputMode(output_mode))
+
+    return write_stream
