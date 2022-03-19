@@ -39,26 +39,6 @@ resource "google_compute_instance" "kafka_vm_instance" {
   }
 }
 
-resource "google_compute_instance" "spark_vm_instance" {
-  name                      = "streamify-spark-instance"
-  machine_type              = "n1-standard-2"
-  tags                      = ["web", "dev"]
-  allow_stopping_for_update = true
-
-  boot_disk {
-    initialize_params {
-      image = var.vm_image
-      size  = 30
-    }
-  }
-
-  network_interface {
-    network = var.network
-    access_config {
-    }
-  }
-}
-
 resource "google_storage_bucket" "bucket" {
   name          = "streamify"
   location      = var.region
@@ -95,7 +75,7 @@ resource "google_dataproc_cluster" "spark_cluster" {
 
     master_config {
       num_instances = 1
-      machine_type  = "e2-medium"
+      machine_type  = "e2-standard-2"
       disk_config {
         boot_disk_type    = "pd-standard"
         boot_disk_size_gb = 40
