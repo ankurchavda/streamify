@@ -14,10 +14,11 @@ GCS_STORAGE_PATH = os.environ["GCS_STORAGE_PATH"]
 LISTEN_EVENTS_TOPIC = "listen_events"
 PAGE_VIEW_EVENTS_TOPIC = "page_view_events"
 AUTH_EVENTS_TOPIC = "auth_events"
+AWAIT_TERMINATION_TIMEOUT = 60
 
 # initialize a spark session
 spark = create_or_get_spark_session('Eventsim Stream')
-
+spark.streams.resetTerminated()
 # listen events stream
 listen_events = create_kafka_read_stream(
     spark, KAFKA_ADDRESS, KAFKA_PORT, LISTEN_EVENTS_TOPIC)
@@ -36,16 +37,22 @@ auth_events = process_stream(auth_events, auth_events_schema)
 # write a file to storage every 2 minutes in parquet format
 listen_events_writer = create_file_write_stream(listen_events,
                                                 f"{GCS_STORAGE_PATH}/{LISTEN_EVENTS_TOPIC}",
-                                                f"{GCS_STORAGE_PATH}/checkpoint/{LISTEN_EVENTS_TOPIC}")
+                                                f"{GCS_STORAGE_PATH}/checkpoint/{LISTEN_EVENTS_TOPIC}"
+                                                )
 
 page_view_events_writer = create_file_write_stream(page_view_events,
                                                    f"{GCS_STORAGE_PATH}/{PAGE_VIEW_EVENTS_TOPIC}",
-                                                   f"{GCS_STORAGE_PATH}/checkpoint/{PAGE_VIEW_EVENTS_TOPIC}")
+                                                   f"{GCS_STORAGE_PATH}/checkpoint/{PAGE_VIEW_EVENTS_TOPIC}"
+                                                   )
 
 auth_events_writer = create_file_write_stream(auth_events,
                                               f"{GCS_STORAGE_PATH}/{AUTH_EVENTS_TOPIC}",
-                                              f"{GCS_STORAGE_PATH}/checkpoint/{AUTH_EVENTS_TOPIC}")
+                                              f"{GCS_STORAGE_PATH}/checkpoint/{AUTH_EVENTS_TOPIC}"
+                                              )
+
 
 listen_events_writer.start()
+auth_events_writer.start()
 page_view_events_writer.start()
-auth_events_writer.start().awaitTermination()
+
+spark.streams.awaitAnyTermination()
