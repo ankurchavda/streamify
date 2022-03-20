@@ -87,6 +87,6 @@ bash scripts/spark_setup.sh username
 
 ## TODO
 
-1. Fix Spark Script with py4j eval
-2. Make setup easier with `Makefile`. Possibly a one-click setup.
-3. Setup the entire cluster with Terraform.
+1. Make setup easier with `Makefile`. Possibly a one-click setup.
+2. Setup the entire cluster with Terraform - Open network ports, create target tags.
+3. Object-oriented design for spark streaming. 
