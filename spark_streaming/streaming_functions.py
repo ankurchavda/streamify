@@ -44,6 +44,7 @@ def create_kafka_read_stream(spark, kafka_address, kafka_port, topic, starting_o
                    .readStream
                    .format("kafka")
                    .option("kafka.bootstrap.servers", f"{kafka_address}:{kafka_port}")
+                   .option("failOnDataLoss", False)
                    .option("startingOffsets", starting_offset)
                    .option("subscribe", topic)
                    .load())
