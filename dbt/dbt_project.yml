@@ -34,5 +34,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   streamify:
     # Config indicated by + and applies to all files under models/example/
-    example:
+    staging:
       +materialized: view
+    core:
+      +materialized: table

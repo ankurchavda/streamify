@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+    - name: staging
+
+      database: dtc-ny-taxi
+
+      schema: streamify_stg
+
+      tables:
+        - name: listen_events
+        - name: page_view_events
+        - name: auth_events
