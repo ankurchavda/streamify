@@ -33,3 +33,15 @@ variable "network" {
   default     = "default"
   type        = string
 }
+
+variable "dev_bq_dataset" {
+  description = "Storage class type for your bucket. Check official docs for more info."
+  default     = "streamify_dev"
+  type        = string
+}
+
+variable "prod_bq_dataset" {
+  description = "Storage class type for your bucket. Check official docs for more info."
+  default     = "streamify_prod"
+  type        = string
+}
