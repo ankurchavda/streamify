@@ -38,3 +38,28 @@ models:
       +materialized: view
     core:
       +materialized: table
+  
+seeds:
+  streamify:
+    songs:
+      +column_types:
+        artist_id: STRING
+        artist_latitude: STRING
+        artist_location: STRING
+        artist_longitude: STRING
+        artist_name: STRING
+        danceability: STRING
+        duration: STRING
+        energy: STRING
+        key: STRING
+        key_confidence: STRING
+        loudness: STRING
+        mode: STRING
+        mode_confidence: STRING
+        release: STRING
+        song_hotttnesss: STRING
+        song_id: STRING
+        tempo: STRING
+        title: STRING
+        track_id: STRING
+        year: STRING
