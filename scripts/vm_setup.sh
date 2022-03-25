@@ -1,12 +1,7 @@
 #!/bin/bash
 
 # Run using the below command
-# bash vm_setup.sh <username>
-
-if [[ $# -eq 0 ]] ; then
-    echo 'Warning: pass your username like this "bash vm_setup.sh username"'
-    exit 0
-fi
+# bash vm_setup.sh
 
 echo "Downloading anaconda..."
 wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
@@ -18,7 +13,7 @@ echo "Removing anaconda script..."
 rm Anaconda3-2021.11-Linux-x86_64.sh
 
 #activate conda
-eval "$(/home/$1/anaconda/bin/conda shell.bash hook)"
+eval "$($USER/anaconda/bin/conda shell.bash hook)"
 
 echo "Running conda init..."
 conda init
