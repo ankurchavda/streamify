@@ -1,0 +1,25 @@
+streamify:
+  outputs:
+    dev:
+      dataset: streamify_stg
+      fixed_retries: 1
+      keyfile: /.google/credentials/google_credentials.json
+      location: us-central1
+      method: service-account
+      priority: interactive
+      project: dtc-ny-taxi
+      threads: 4
+      timeout_seconds: 300
+      type: bigquery
+    prod:
+      dataset: streamify_prod
+      fixed_retries: 1
+      keyfile: /.google/credentials/google_credentials.json
+      location: us-central1
+      method: service-account
+      priority: interactive
+      project: dtc-ny-taxi
+      threads: 4
+      timeout_seconds: 300
+      type: bigquery
+  target: dev
