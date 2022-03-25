@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Changing permissions for dbt folder..."
 cd ~/streamify/ && sudo chmod -R 777 dbt
 
