@@ -57,8 +57,8 @@ with DAG(
 ) as dag:
     
     initate_dbt_task = BashOperator(
-        task_id = 'dbt_deps_and_seed',
-        bash_command = 'cd /dbt && dbt deps && dbt seed'
+        task_id = 'dbt_initiate',
+        bash_command = 'cd /dbt && dbt deps'
     )
 
     execute_dbt_task = BashOperator(
