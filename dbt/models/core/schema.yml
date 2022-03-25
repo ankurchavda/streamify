@@ -8,11 +8,13 @@ sources:
         - name: listen_events
         - name: page_view_events
         - name: auth_events
+        - name: songs
 
-    - name: production
-      database: dtc-ny-taxi
-      schema: streamify_prod
-      tables:
-        - name: listen_events
-        - name: page_view_events
-        - name: auth_events
+    # - name: production
+    #   database: dtc-ny-taxi
+    #   schema: streamify_prod
+    #   tables:
+    #     - name: listen_events
+    #     - name: page_view_events
+    #     - name: auth_events
+    #     - name: songs
