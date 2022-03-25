@@ -13,7 +13,7 @@ echo "Removing anaconda script..."
 rm Anaconda3-2021.11-Linux-x86_64.sh
 
 #activate conda
-eval "$($USER/anaconda/bin/conda shell.bash hook)"
+eval "$($HOME/anaconda/bin/conda shell.bash hook)"
 
 echo "Running conda init..."
 conda init
