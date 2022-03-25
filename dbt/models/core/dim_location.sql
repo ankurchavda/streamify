@@ -9,7 +9,7 @@ FROM
             state,
             lat as latitude,
             lon as longitude
-        FROM source('staging', 'listen_events')
+        FROM {{ source('staging', 'listen_events') }}
 
         UNION ALL
 

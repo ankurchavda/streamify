@@ -15,7 +15,7 @@ FROM (
                 tempo,
                 title,
                 year
-            FROM source('staging', 'songs')
+            FROM {{ source('staging', 'songs') }}
         )
 
         UNION ALL

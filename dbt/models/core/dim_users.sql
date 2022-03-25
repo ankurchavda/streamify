@@ -38,9 +38,9 @@ GROUP BY userId, firstName, lastName, gender, registration, level, grouped
 
 UNION ALL
 
-SELECT CAST(user_id as BIGINT), first_name, last_name, gender, level, CAST(registration as BIGINT), CAST(min(ts) as date) as row_activation_date, DATE '9999-12-31' as row_expiration_date, 1 as current_row
-FROM stats 
-WHERE user_id = '0' or user_id = '1'
-GROUP BY user_id, first_name, last_name, gender, registration, level
+SELECT CAST(userId as BIGINT) as userKey, firstName, lastName, gender, level, CAST(registration as BIGINT) as registration, CAST(min(ts) as date) as rowActivationDate, DATE '9999-12-31' as rowExpirationDate, 1 as currentRow
+FROM {{ source('staging', 'listen_events') }} 
+WHERE userId = 0 or userId = 1
+GROUP BY userId, firstName, lastName, gender, level, registration
 
 )
