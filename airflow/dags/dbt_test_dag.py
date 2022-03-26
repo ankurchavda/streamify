@@ -19,7 +19,7 @@ with DAG(
 
     dbt_test_task = BashOperator(
         task_id = "dbt_test",
-        bash_command = "cd /dbt && dbt compile --profiles-dir ."
+        bash_command = "cd /dbt && dbt deps && dbt compile --profiles-dir ."
     )
 
     dbt_test_task
