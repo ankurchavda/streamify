@@ -136,8 +136,6 @@ ssh streamify-airflow
 - Clone git repo, update and install make
 
     ```bash
-    sudo apt-get update && \
-    sudo apt-get install make && \
     git clone https://github.com/ankurchavda/streamify.git && \
     cd streamify
     ```
@@ -150,10 +148,25 @@ ssh streamify-airflow
     exec newgrp docker
     ```
 
-- Start Airflow. (This shall take time, have coffee!)
+- Set the evironment variables -
+  - GCP Project ID
+  - Cloud Storage Bucket
+    ```bash
+    export GCP_PROJECT_ID=project-id
+    export GCP_GCS_BUCKET=bucket-name
+    ```
+  **Note**: You will have setup these env vars every time you create a shell session.
+
+- Start Airflow. (This shall take a few good minutes, grab a coffee!)
   ```bash
   bash ~/streamify/scripts/airflow_startup.sh && cd ~/streamify/airflow
   ```
+- Follow the docker-compose logs
+  ```bash
+  docker-compose --follow
+  ```
+- Airflow should be available on port `8080`. Login with default username & password as **airflow**.
+
 ## TODO
 
 1. Change lat/lon values to decimal
