@@ -61,8 +61,8 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- dbt-bigquery==1.0.0}
     GOOGLE_APPLICATION_CREDENTIALS: /.google/credentials/google_credentials.json
     AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: 'google-cloud-platform://?extra__google_cloud_platform__key_path=/.google/credentials/google_credentials.json'
-    GCP_PROJECT_ID: 'dtc-ny-taxi'
-    GCP_GCS_BUCKET: 'streamify'
+    GCP_PROJECT_ID: '${GCP_PROJECT_ID}'
+    GCP_GCS_BUCKET: '${GCP_GCS_BUCKET}'
   
   volumes:
     - ./dags:/opt/airflow/dags

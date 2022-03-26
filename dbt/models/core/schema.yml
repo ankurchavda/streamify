@@ -2,19 +2,10 @@ version: 2
 
 sources:
     - name: staging
-      database: dtc-ny-taxi
+      database: {{ env_var('GCP_PROJECT_ID') }}
       schema: streamify_stg
       tables:
         - name: listen_events
         - name: page_view_events
         - name: auth_events
         - name: songs
-
-    # - name: production
-    #   database: dtc-ny-taxi
-    #   schema: streamify_prod
-    #   tables:
-    #     - name: listen_events
-    #     - name: page_view_events
-    #     - name: auth_events
-    #     - name: songs
