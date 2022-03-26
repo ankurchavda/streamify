@@ -7,7 +7,7 @@ streamify:
       location: us-central1
       method: service-account
       priority: interactive
-      project: {{ env_var('GCP_PROJECT_ID') }}
+      project: "{{ env_var('GCP_PROJECT_ID') }}"
       threads: 4
       timeout_seconds: 300
       type: bigquery
@@ -18,7 +18,7 @@ streamify:
       location: us-central1
       method: service-account
       priority: interactive
-      project: {{ env_var('GCP_PROJECT_ID') }}
+      project: "{{ env_var('GCP_PROJECT_ID') }}"
       threads: 4
       timeout_seconds: 300
       type: bigquery
