@@ -1,6 +1,5 @@
 variable "project" {
   description = "Your GCP Project ID"
-  default     = "dtc-ny-taxi"
   type        = string
 }
 
@@ -34,14 +33,31 @@ variable "network" {
   type        = string
 }
 
-variable "dev_bq_dataset" {
+variable "stg_bq_dataset" {
   description = "Storage class type for your bucket. Check official docs for more info."
-  default     = "streamify_dev"
+  default     = "streamify_stg"
   type        = string
 }
 
 variable "prod_bq_dataset" {
   description = "Storage class type for your bucket. Check official docs for more info."
   default     = "streamify_prod"
+  type        = string
+}
+
+variable "bucket" {
+  description = "The name of your bucket. This would act as prefix. The suffix should help create a unique bucket name"
+  default     = "streamify"
+  type        = string
+}
+
+variable "bucket_suffix" {
+  description = "A suffix (streamify-<suffix>) to help create a unique gcs bucket globally. Please enter a value without spaces."
+  type        = string
+}
+
+variable "streamify_git_repo" {
+  description = "Clone URL of the git repo"
+  default     = "https://github.com/ankurchavda/streamify.git"
   type        = string
 }
