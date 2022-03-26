@@ -19,7 +19,7 @@ AWAIT_TERMINATION_TIMEOUT = 60
 KAFKA_ADDRESS = os.getenv("KAFKA_ADDRESS", 'localhost')
 GCP_GCS_BUCKET = os.getenv("GCP_GCS_BUCKET", 'streamify')
 # will raise error if env variable not found
-GCS_STORAGE_PATH = f'gs://{GCP_GCS_BUCKET}/streamify'
+GCS_STORAGE_PATH = f'gs://{GCP_GCS_BUCKET}'
 
 # GCS_STORAGE_PATH = os.environ["GCS_STORAGE_PATH"]
 
