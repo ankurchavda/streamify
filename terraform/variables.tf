@@ -46,18 +46,6 @@ variable "prod_bq_dataset" {
 }
 
 variable "bucket" {
-  description = "The name of your bucket. This would act as prefix. The suffix should help create a unique bucket name"
-  default     = "streamify"
-  type        = string
-}
-
-variable "bucket_suffix" {
-  description = "A suffix (streamify-<suffix>) to help create a unique gcs bucket globally. Please enter a value without spaces."
-  type        = string
-}
-
-variable "streamify_git_repo" {
-  description = "Clone URL of the git repo"
-  default     = "https://github.com/ankurchavda/streamify.git"
+  description = "The name of your bucket. This should be unique across GCP"
   type        = string
 }

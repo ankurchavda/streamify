@@ -15,9 +15,7 @@ provider "google" {
   // credentials = file(var.credentials)  # Use this if you do not want to set env-var GOOGLE_APPLICATION_CREDENTIALS
 }
 
-locals {
-  unique_bucket = "${var.bucket}-${var.bucket_suffix}"
-}
+
 resource "google_compute_firewall" "port_rules" {
   project     = var.project
   name        = "kafka-broker-port"
@@ -75,7 +73,7 @@ resource "google_compute_instance" "airflow_vm_instance" {
 }
 
 resource "google_storage_bucket" "bucket" {
-  name          = "streamify"
+  name          = var.bucket
   location      = var.region
   force_destroy = true
 
@@ -98,7 +96,7 @@ resource "google_dataproc_cluster" "mulitnode_spark_cluster" {
 
   cluster_config {
 
-    staging_bucket = "streamify"
+    staging_bucket = var.bucket
 
     gce_cluster_config {
       network = var.network

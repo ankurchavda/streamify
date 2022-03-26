@@ -58,12 +58,12 @@ with DAG(
     
     initate_dbt_task = BashOperator(
         task_id = 'dbt_initiate',
-        bash_command = 'cd /dbt && dbt deps'
+        bash_command = 'cd /dbt && dbt deps && dbt compile --profiles-dir .'
     )
 
     execute_dbt_task = BashOperator(
         task_id = 'dbt_streamify_run',
-        bash_command = 'cd /dbt && dbt run'
+        bash_command = 'cd /dbt && dbt deps && dbt run --profiles-dir .'
     )
 
     for event in EVENTS:
