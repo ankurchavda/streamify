@@ -13,13 +13,6 @@ from task_templates import (create_external_table,
 
 EVENTS = ['listen_events', 'page_view_events', 'auth_events'] # we have data coming in from three events
 
-#Make Dynamic
-# BIG_QUERY_TABLE_NAME = 'listen_events'
-# INSERT_QUERY = "{% include 'sql/listen_events.sql' %}"
-# EXTERNAL_TABLE_NAME = f'{BIG_QUERY_TABLE_NAME}_{EXECUTION_DATETIME_STR}'
-# EVENTS_PATH = f'{BIG_QUERY_TABLE_NAME}/month={EXECUTION_MONTH}/day={EXECUTION_DAY}/hour={EXECUTION_HOUR}'
-# EVENTS_SCHEMA = schema[BIG_QUERY_TABLE_NAME]
-###
 
 GCP_PROJECT_ID = os.environ.get('GCP_PROJECT_ID')
 GCP_GCS_BUCKET = os.environ.get('GCP_GCS_BUCKET')
@@ -57,12 +50,12 @@ with DAG(
     
     initate_dbt_task = BashOperator(
         task_id = 'dbt_initiate',
-        bash_command = 'cd /dbt && dbt deps && dbt compile --profiles-dir .'
+        bash_command = 'cd /dbt && dbt deps && dbt seed --select state_codes --profiles-dir . --target prod'
     )
 
     execute_dbt_task = BashOperator(
         task_id = 'dbt_streamify_run',
-        bash_command = 'cd /dbt && dbt deps && dbt run --profiles-dir .'
+        bash_command = 'cd /dbt && dbt deps && dbt run --profiles-dir . --target prod'
     )
 
     for event in EVENTS:
@@ -103,4 +96,3 @@ with DAG(
         delete_external_table_task >> \
         initate_dbt_task >> \
         execute_dbt_task
-        
