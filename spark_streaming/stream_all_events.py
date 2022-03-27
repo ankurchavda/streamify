@@ -1,6 +1,6 @@
 # Run the script using the following command
 # spark-submit \
-#   --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.3 \
+#   --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 \
 # stream_all_events.py
 
 import os
@@ -14,14 +14,9 @@ AUTH_EVENTS_TOPIC = "auth_events"
 
 KAFKA_PORT = "9092"
 
-AWAIT_TERMINATION_TIMEOUT = 60
-
 KAFKA_ADDRESS = os.getenv("KAFKA_ADDRESS", 'localhost')
 GCP_GCS_BUCKET = os.getenv("GCP_GCS_BUCKET", 'streamify')
-# will raise error if env variable not found
 GCS_STORAGE_PATH = f'gs://{GCP_GCS_BUCKET}'
-
-# GCS_STORAGE_PATH = os.environ["GCS_STORAGE_PATH"]
 
 # initialize a spark session
 spark = create_or_get_spark_session('Eventsim Stream')
