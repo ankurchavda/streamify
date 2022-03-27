@@ -6,7 +6,7 @@ FROM (
 
         (
             SELECT song_id as songId,
-                artist_name as artistName,
+                REPLACE(REPLACE(artist_name, '"', ''), '\\', '') as artistName,
                 duration,
                 key,
                 key_confidence as keyConfidence,
