@@ -68,6 +68,7 @@ We will setup Kafka and eventsim in two separate docker processes in a dedicated
   - page_view_events
   - auth_events
   - status_change_events
+  ![topics](../images/topics.png)
 
 - **Note:** If you happen to re-rerun the evenstim container and face the following error -
   

@@ -71,6 +71,13 @@ The setup has two dags
   - This dag will run hourly at the 5th minute and perform transformations to create the dimensions and fact.
 ![streamify_dag](../images/streamify_dag.png)
 
+  - DAG Flow -
+    - We first create an external table for the data that was received in the past hour.
+    - We then create an empty table to which our hourly data will be appended. Usually, this will only ever run in the first run.
+    - Then we insert or append the hourly data, into the table.
+    - And then, delete the external table.
+    - Finally, run the dbt transformation, to create our dimensions and facts.
+
 ### dbt
 
 The transformations happen using dbt which is triggered by Airflow. The dbt lineage should look something like this -
@@ -78,13 +85,15 @@ The transformations happen using dbt which is triggered by Airflow. The dbt line
 ![img](../images/dbt.png)
 
 Dimensions:
-- dim_artists
-- dim_songs
-- dim_datetime
-- dim_location
-- dim_users
+- `dim_artists`
+- `dim_songs`
+- `dim_datetime`
+- `dim_location`
+- `dim_users`
 
 Facts:
-- fact_streams
+- `fact_streams`
   - Partitioning:
     - Data is partitioned on the timestamp column by hour to provide faster data updates for a dashboard that shows data for the last few hours.
+
+Finally, we create `wide_stream` view to aid dashboarding.

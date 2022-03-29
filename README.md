@@ -12,7 +12,7 @@ The project will stream events generated from a fake music streaming service (li
 
 [Eventsim](https://github.com/Interana/eventsim) is a program that generates event data to replicate page requests for a fake music web site. The results look like real use data, but are totally fake. The docker image is borrowed from [viirya's fork](https://github.com/viirya/eventsim) of it, as the original project has gone without maintenance for a few years now.
 
-Eventsim uses song data from [Million Songs Dataset](http://millionsongdataset.com) to generate events. I have used a [subset](http://millionsongdataset.com/pages/getting-dataset/#subset) of 10000 songs
+Eventsim uses song data from [Million Songs Dataset](http://millionsongdataset.com) to generate events. I have used a [subset](http://millionsongdataset.com/pages/getting-dataset/#subset) of 10000 songs.
 
 ### Tools & Technologies
 
@@ -31,11 +31,14 @@ Eventsim uses song data from [Million Songs Dataset](http://millionsongdataset.c
 
 ![streamify-architecture](images/Streamify-Architecture.jpg)
 
+### Final Result
+
+![dashboard](images/dashboard.png)
 ## Setup
 
 ### Pre-requisites
 
-If you already have a Google Cloud account and a working terraform setup, you can skip the pre-requisites steps.
+If you already have a Google Cloud account and a working terraform setup, you can skip the pre-requisite steps.
 
 **WARNING: You will be charged for all the infra setup. You can avail 300$ in credit by creating a new account on GCP.**
 
@@ -66,4 +69,8 @@ A lot can still be done :).
 - Build dimensions and facts incrementally instead of full refresh
 - Write data quality tests
 - Create dimensional models for additional business processes
+- Include CI/CD
 - Add more visualizations
+
+### Special Mentions
+I'd like to thank the [DataTalks](https://datatalks.club) club for offering this completely free course on Data Engineering. All the things I learnt there, enabled me to come up with this project. If you want upskill on Data Engineering technologies, please check out the [course](https://github.com/DataTalksClub/data-engineering-zoomcamp). :)
