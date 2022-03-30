@@ -6,7 +6,7 @@ A data pipeline with Kafka, Spark Streaming, dbt, Docker, Airflow, Terraform, GC
 
 ### Objective
 
-The project will stream events generated from a fake music streaming service (like Spotify) and create a data pipeline that consumes the real-time data. The data coming in would be similar to an event of a user listening to a song, navigating on the website, authenticating. The data would be processed in real-time and stored to the data lake every periodically (every two minutes). The hourly batch job will then consume this data, apply tranformation, and create the desired tables for our dashboard to generate analytics. We will try to analyze metrics like popular songs, active users, user demographics etc.
+The project will stream events generated from a fake music streaming service (like Spotify) and create a data pipeline that consumes the real-time data. The data coming in would be similar to an event of a user listening to a song, navigating on the website, authenticating. The data would be processed in real-time and stored to the data lake periodically (every two minutes). The hourly batch job will then consume this data, apply tranformations, and create the desired tables for our dashboard to generate analytics. We will try to analyze metrics like popular songs, active users, user demographics etc.
 
 ### Dataset
 
@@ -36,11 +36,10 @@ Eventsim uses song data from [Million Songs Dataset](http://millionsongdataset.c
 ![dashboard](images/dashboard.png)
 ## Setup
 
+**WARNING: You will be charged for all the infra setup. You can avail 300$ in credit by creating a new account on GCP.**
 ### Pre-requisites
 
 If you already have a Google Cloud account and a working terraform setup, you can skip the pre-requisite steps.
-
-**WARNING: You will be charged for all the infra setup. You can avail 300$ in credit by creating a new account on GCP.**
 
 - Google Cloud Platform. 
   - [GCP Account and Access Setup](setup/gcp.md)
