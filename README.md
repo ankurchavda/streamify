@@ -49,6 +49,9 @@ If you already have a Google Cloud account and a working terraform setup, you ca
 
 
 ### Get Going!
+
+If you prefer a video walk through, this [YouTube Video](https://youtu.be/vzoYhI8KTlY)
+
 - Procure infra on GCP with Terraform - [Setup](setup/terraform.md)
 - (Extra) SSH into your VMs, Forward Ports - [Setup](setup/ssh.md)
 - Setup Kafka Compute Instance and start sending messages from Eventsim - [Setup](setup/kafka.md)
